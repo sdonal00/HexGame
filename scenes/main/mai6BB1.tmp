@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://j1ojp1ske4qa"]
+
+[ext_resource type="PackedScene" uid="uid://b75xo0iagkxcy" path="res://scenes/turret/turret.tscn" id="1_1khyv"]
+[ext_resource type="PackedScene" uid="uid://bh8db1tewsumy" path="res://scenes/levels/level_1.tscn" id="1_78gus"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_leve3"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_leve3")
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="Level" type="Node2D" parent="Game"]
+
+[node name="Level1" parent="Game/Level" instance=ExtResource("1_78gus")]
+
+[node name="Turret" parent="Game" instance=ExtResource("1_1khyv")]
+visible = false
+position = Vector2(596, 720)
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HomeMenu" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

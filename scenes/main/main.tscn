@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://j1ojp1ske4qa"]
+
+[ext_resource type="PackedScene" uid="uid://b75xo0iagkxcy" path="res://scenes/turret/turret.tscn" id="1_1khyv"]
+[ext_resource type="PackedScene" uid="uid://bh8db1tewsumy" path="res://scenes/levels/level_1.tscn" id="1_78gus"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_leve3"]
+[ext_resource type="Script" path="res://scenes/main/menu.gd" id="4_w2lvb"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_leve3")
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="Level" type="Node2D" parent="Game"]
+
+[node name="Level1" parent="Game/Level" instance=ExtResource("1_78gus")]
+
+[node name="Turret" parent="Game" instance=ExtResource("1_1khyv")]
+visible = false
+position = Vector2(596, 720)
+
+[node name="Projectiles" type="Node2D" parent="Game"]
+
+[node name="Menu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_w2lvb")
+
+[node name="HomeMenu" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameHud" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/GameHud"]
+layout_mode = 1
+offset_left = 905.0
+offset_top = 3.0
+offset_right = 1001.0
+offset_bottom = 48.0
+
+[node name="Score" type="Label" parent="Menu/GameHud/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Score: "
+
+[node name="PauseMenu" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="create_projectiles" from="Game/Turret" to="." method="_on_turret_create_projectiles"]

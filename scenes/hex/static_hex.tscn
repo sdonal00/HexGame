@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6ik2cy5y2dqd"]
+
+[ext_resource type="PackedScene" uid="uid://durcqx6stwqoq" path="res://scenes/hex/hex.tscn" id="1_bslqf"]
+
+[node name="StaticHex" instance=ExtResource("1_bslqf")]
+collision_layer = 2
+collision_mask = 6
+gravity_scale = 0.0
+sleeping = true
+freeze = true
+
+[node name="HexImage" parent="." index="1"]
+modulate = Color(0.388235, 0.388235, 0.388235, 1)

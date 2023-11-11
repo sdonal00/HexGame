@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://durcqx6stwqoq"]
+
+[ext_resource type="Texture2D" uid="uid://cmc407475qi2j" path="res://graphics/hex/hex.png" id="1_4kp73"]
+[ext_resource type="Script" path="res://scenes/hex/hex.gd" id="1_mo4oo"]
+
+[node name="Hex" type="RigidBody2D" groups=["Hex"]]
+collision_mask = 7
+gravity_scale = 0.5
+script = ExtResource("1_mo4oo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.05, 0.05)
+polygon = PackedVector2Array(-373, 0, -186, -324, 187, -324, 374, 0, 187, 323, -187, 323)
+
+[node name="HexImage" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_4kp73")
