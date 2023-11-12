@@ -41,10 +41,10 @@ offset_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Menu/GameHud"]
 layout_mode = 1
-offset_left = 905.0
-offset_top = 3.0
-offset_right = 1001.0
-offset_bottom = 48.0
+offset_left = 282.0
+offset_top = 8.0
+offset_right = 378.0
+offset_bottom = 53.0
 
 [node name="Score" type="Label" parent="Menu/GameHud/HBoxContainer"]
 layout_mode = 2

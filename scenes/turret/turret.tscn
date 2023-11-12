@@ -8,11 +8,10 @@ script = ExtResource("1_ro1mp")
 
 [node name="DotImage" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.615686)
-scale = Vector2(0.025, 0.025)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_r80k8")
 
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(15, 0)
-points = PackedVector2Array(0, 0, 9, 0)
-width = 5.0
-default_color = Color(1, 1, 1, 0.47451)
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(28, 0)
+
+[node name="Lines" type="Node2D" parent="."]

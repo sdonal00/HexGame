@@ -6,11 +6,12 @@ var stuck: bool = false
 
 func _ready():
 	linear_velocity = direction * speed
+	linear_damp = 0
 	
 func _physics_process(delta):
-	check_velocity()
-	if linear_velocity.abs().x < 50 and linear_velocity.abs().y < 50:
-		queue_free()
+	#print(linear_velocity)
+	pass
+	#todo: check if object is stuck in area (timer once no damage is done to hexes)
 
 func check_velocity():
 	if linear_velocity.abs().x < 50 and linear_velocity.abs().y < 50:
@@ -23,3 +24,7 @@ func check_velocity():
 func _on_kill_timer_timeout():
 	if stuck:
 		queue_free()
+
+func _on_body_entered(body):
+	if body.has_method("hit"):
+		body.hit()
