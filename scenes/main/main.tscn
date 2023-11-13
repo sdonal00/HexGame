@@ -20,6 +20,10 @@ position = Vector2(596, 720)
 
 [node name="Projectiles" type="Node2D" parent="Game"]
 
+[node name="HitTimer" type="Timer" parent="Game"]
+wait_time = 5.0
+one_shot = true
+
 [node name="Menu" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
@@ -41,20 +45,26 @@ offset_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Menu/GameHud"]
 layout_mode = 1
-offset_left = 282.0
-offset_top = 8.0
-offset_right = 378.0
-offset_bottom = 53.0
+offset_left = 310.0
+offset_top = 5.0
+offset_right = 406.0
+offset_bottom = 50.0
 
-[node name="Score" type="Label" parent="Menu/GameHud/HBoxContainer"]
+[node name="Points" type="Label" parent="Menu/GameHud/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
-text = "Score: "
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="Menu"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="all_hexes_killed" from="Game/Level/Level1" to="." method="_on_level_1_all_hexes_killed"]
+[connection signal="projectile_deleted" from="Game/Level/Level1" to="." method="_on_level_1_projectile_deleted"]
+[connection signal="update_score" from="Game/Level/Level1" to="." method="_on_level_1_update_score"]
 [connection signal="create_projectiles" from="Game/Turret" to="." method="_on_turret_create_projectiles"]
+[connection signal="timeout" from="Game/HitTimer" to="." method="_on_hit_timer_timeout"]
