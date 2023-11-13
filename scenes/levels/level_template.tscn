@@ -7,7 +7,7 @@
 size = Vector2(809, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngg1u"]
-size = Vector2(722, 339)
+size = Vector2(952, 508)
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_7yo4t")
@@ -42,34 +42,34 @@ polygon = PackedVector2Array(18, 1278, 18, -6, 739, -7, 738, 1278, 921, 1279, 91
 position = Vector2(0, 80)
 
 [node name="2" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 161)
+position = Vector2(2.08165e-12, 160)
 
 [node name="3" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 242)
+position = Vector2(2.08165e-12, 240)
 
 [node name="4" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 323)
+position = Vector2(2.08165e-12, 320)
 
 [node name="5" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 403)
+position = Vector2(2.08165e-12, 400)
 
 [node name="6" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 484)
+position = Vector2(2.08165e-12, 480)
 
 [node name="7" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 565)
+position = Vector2(2.08165e-12, 560)
 
 [node name="8" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 646)
+position = Vector2(2.08165e-12, 640)
 
 [node name="9" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 727)
+position = Vector2(2.08165e-12, 720)
 
 [node name="10" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 808)
+position = Vector2(2.08165e-12, 800)
 
 [node name="11" type="Marker2D" parent="RowMarkers"]
-position = Vector2(0, 889)
+position = Vector2(2.08165e-12, 880)
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(-2, 939, 718, 939)
@@ -77,10 +77,10 @@ width = 4.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="ShootingZone" type="Area2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(-2, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingZone"]
-position = Vector2(360, 1110.5)
+position = Vector2(371, 1195)
 shape = SubResource("RectangleShape2D_ngg1u")
 
 [connection signal="body_entered" from="DespawnZone" to="." method="_on_despawn_zone_body_entered"]

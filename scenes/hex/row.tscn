@@ -8,31 +8,31 @@ position = Vector2(0, -119)
 script = ExtResource("1_f4rw7")
 
 [node name="Hex" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(45, 38)
+position = Vector2(45, 79)
 
 [node name="Hex2" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(115, 78)
+position = Vector2(115, 119)
 
 [node name="Hex3" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(186, 39)
+position = Vector2(185, 79)
 
 [node name="Hex4" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(256, 79)
+position = Vector2(255, 119)
 
 [node name="Hex5" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(326, 39)
+position = Vector2(325, 79)
 
 [node name="Hex6" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(395, 79)
+position = Vector2(395, 119)
 
 [node name="Hex7" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(465, 39)
+position = Vector2(465, 79)
 
 [node name="Hex8" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(535, 79)
+position = Vector2(535, 119)
 
 [node name="Hex9" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(605, 39)
+position = Vector2(605, 79)
 
 [node name="Hex10" parent="." instance=ExtResource("1_etbn2")]
-position = Vector2(675, 79)
+position = Vector2(675, 119)
