@@ -12,6 +12,7 @@ font_color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-19, -32, -37, 0, -19, 32, 19, 32, 37, 0, 19, -32)
 
 [node name="Hex" type="StaticBody2D" groups=["Hex"]]
+collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_mo4oo")
 

@@ -10,6 +10,7 @@ func _ready():
 	
 func _physics_process(_delta):
 	if health <= 0:
+		print("here")
 		queue_free()
 	
 func set_health(health2: int):

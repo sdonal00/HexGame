@@ -10,6 +10,7 @@ var shooting: bool = false
 var direction: Vector2
 var lines: Array
 var max_lines: int = 6
+var clicked: bool = false
 
 func _process(_delta):
 	get_input()
@@ -37,13 +38,14 @@ func get_input():
 	if Input.is_action_just_pressed("primary") and !shooting and Globals.mouse_in_shooting_zone and Globals.can_shoot:
 		position = get_global_mouse_position()
 		visible = true
-	elif Input.is_action_pressed("primary") and !shooting and Globals.mouse_in_shooting_zone and Globals.can_shoot:
+		clicked = true
+	elif Input.is_action_pressed("primary") and !shooting and Globals.mouse_in_shooting_zone and Globals.can_shoot and clicked:
 		var dir = (position - get_global_mouse_position()).normalized()
 		rotation = dir.angle()
 		direction = dir
 		spawn_lines()
 		visible = true
-	elif Input.is_action_just_released("primary") and !shooting and Globals.mouse_in_shooting_zone and Globals.can_shoot:
+	elif Input.is_action_just_released("primary") and !shooting and Globals.mouse_in_shooting_zone and Globals.can_shoot and clicked:
 		shooting = true
 		Globals.can_shoot = false
 		var released_position = get_global_mouse_position()
@@ -54,12 +56,13 @@ func get_input():
 			if projectile.direction.x == 0 and projectile.direction.y == 0:
 				projectile.direction = Vector2.UP
 			projectile.speed = min(max(position.distance_to(released_position) * 2, 200), 600)
-			print(projectile.speed)
 			create_projectiles.emit(projectile)
 			await get_tree().create_timer(0.1).timeout
 		shooting = false
 		projectile_count += 1
+		clicked = false
 	elif !shooting:
+		clicked = false
 		lines = $Lines.get_children()
 		for child in lines:
 			child.queue_free()

@@ -64,6 +64,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [connection signal="all_hexes_killed" from="Game/Level/Level1" to="." method="_on_level_1_all_hexes_killed"]
+[connection signal="game_over" from="Game/Level/Level1" to="." method="_on_level_1_game_over"]
 [connection signal="projectile_deleted" from="Game/Level/Level1" to="." method="_on_level_1_projectile_deleted"]
 [connection signal="update_score" from="Game/Level/Level1" to="." method="_on_level_1_update_score"]
 [connection signal="create_projectiles" from="Game/Turret" to="." method="_on_turret_create_projectiles"]

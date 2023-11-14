@@ -6,6 +6,7 @@ var row_scene: PackedScene = preload("res://scenes/hex/row.tscn")
 signal all_hexes_killed()
 signal update_score()
 signal projectile_deleted()
+signal game_over()
 
 func _ready():
 	create_row()
@@ -18,17 +19,18 @@ func start_next_round():
 
 func move_rows():
 	var rows = $Rows.get_children()
-	await $Rows.get_children()
-	print(len(rows))
-	for i in len(row_markers) - 1:
-		print(i ," i")
-		print(len(rows)," length")
-		if i < len(rows):
+	for i in len(rows):
+		print("here")
+		if i < len(row_markers) - 1 and i < len(rows) and len(row_markers) > len(rows)-i:
 			var tween = get_tree().create_tween().set_parallel(true)
-			tween.tween_property(rows[len(rows) - (i + 1)], "position", row_markers[i + 1].position, 1).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(rows[i], "position", row_markers[len(rows)-i].position, 1).set_trans(Tween.TRANS_SINE)
 		else:
-			break
-			
+			if rows[0].is_empty():
+				print("free")
+				rows[0].queue_free()
+			else:
+				print("game over")
+
 func create_row():
 	var scene = row_scene.instantiate()
 	$Rows.add_child(scene)

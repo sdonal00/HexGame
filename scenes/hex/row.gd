@@ -11,7 +11,11 @@ func _ready():
 		if num == 0:
 			child.queue_free()
 	set_health()
-	
+
+func is_empty():
+	print("is_empty", get_child_count())
+	return get_child_count() == 0
+		
 func set_health():
 	var children = get_children()
 	var total_health = int(len(children) * Globals.current_round)

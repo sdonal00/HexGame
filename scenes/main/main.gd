@@ -27,10 +27,13 @@ func start_round():
 	$Game/Level/Level1.start_next_round()
 	
 func _on_level_1_update_score():
-	print("hhree1")
 	$Menu/GameHud/HBoxContainer/Points.set_text(str(Globals.points))
 	
 func _on_level_1_projectile_deleted():
 	#1 before last projectile is freed
 	if $Game/Projectiles.get_child_count() == 1:
 		start_round()
+
+
+func _on_level_1_game_over():
+	print("game over")
