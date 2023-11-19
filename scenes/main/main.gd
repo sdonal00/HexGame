@@ -5,6 +5,9 @@ func _on_turret_create_projectiles(projectile):
 	$Game/Projectiles.add_child(projectile)
 	hit_timer_reset()
 
+func _ready():
+	$Menu/GameHud.visible = true
+
 func hit_timer_reset():
 	$Game/HitTimer.stop()
 	$Game/HitTimer.start()
@@ -27,13 +30,12 @@ func start_round():
 	$Game/Level/Level1.start_next_round()
 	
 func _on_level_1_update_score():
-	$Menu/GameHud/HBoxContainer/Points.set_text(str(Globals.points))
+	$Menu/GameHud/Points.set_text(str(Globals.points))
 	
 func _on_level_1_projectile_deleted():
 	#1 before last projectile is freed
 	if $Game/Projectiles.get_child_count() == 1:
 		start_round()
-
 
 func _on_level_1_game_over():
 	print("game over")

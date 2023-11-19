@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://j1ojp1ske4qa"]
+[gd_scene load_steps=8 format=3 uid="uid://j1ojp1ske4qa"]
 
 [ext_resource type="PackedScene" uid="uid://b75xo0iagkxcy" path="res://scenes/turret/turret.tscn" id="1_1khyv"]
 [ext_resource type="PackedScene" uid="uid://bh8db1tewsumy" path="res://scenes/levels/level_1.tscn" id="1_78gus"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_leve3"]
 [ext_resource type="Script" path="res://scenes/main/menu.gd" id="4_w2lvb"]
+[ext_resource type="Texture2D" uid="uid://sgrevhgwluon" path="res://graphics/menus/pause/pause.png" id="5_nrsj2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yrmqc"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_xaeoi"]
+font_size = 50
 
 [node name="Main" type="Node"]
 script = ExtResource("1_leve3")
@@ -32,36 +39,63 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_w2lvb")
 
-[node name="HomeMenu" type="Control" parent="Menu"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="GameHud" type="Control" parent="Menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu/GameHud"]
-layout_mode = 1
-offset_left = 310.0
-offset_top = 5.0
-offset_right = 406.0
-offset_bottom = 50.0
-
-[node name="Points" type="Label" parent="Menu/GameHud/HBoxContainer"]
+[node name="Points" type="Label" parent="Menu/GameHud"]
 layout_mode = 2
+offset_left = 337.0
+offset_top = 3.0
+offset_right = 357.0
+offset_bottom = 55.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "0"
+label_settings = SubResource("LabelSettings_yrmqc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureButton" type="TextureButton" parent="Menu/GameHud"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 44.0
+offset_bottom = 57.0
+size_flags_horizontal = 0
+texture_normal = ExtResource("5_nrsj2")
+
 [node name="PauseMenu" type="Control" parent="Menu"]
+visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 5.0
+offset_bottom = 5.0
+
+[node name="Paused" type="Label" parent="Menu/PauseMenu"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 62.0
+offset_right = 434.0
+offset_bottom = 134.0
+text = "Paused
+"
+label_settings = SubResource("LabelSettings_xaeoi")
+
+[node name="HomeMenu" type="Control" parent="Menu"]
+visible = false
+anchors_preset = 0
+offset_top = 2.0
+offset_right = 6.0
+offset_bottom = 6.0
+
+[node name="GameOverMenu" type="Control" parent="Menu"]
+visible = false
+anchors_preset = 0
+offset_right = 8.0
+offset_bottom = 7.0
 
 [connection signal="all_hexes_killed" from="Game/Level/Level1" to="." method="_on_level_1_all_hexes_killed"]
 [connection signal="game_over" from="Game/Level/Level1" to="." method="_on_level_1_game_over"]
@@ -69,3 +103,4 @@ offset_bottom = 40.0
 [connection signal="update_score" from="Game/Level/Level1" to="." method="_on_level_1_update_score"]
 [connection signal="create_projectiles" from="Game/Turret" to="." method="_on_turret_create_projectiles"]
 [connection signal="timeout" from="Game/HitTimer" to="." method="_on_hit_timer_timeout"]
+[connection signal="pressed" from="Menu/GameHud/TextureButton" to="Menu" method="_on_texture_button_pressed"]
