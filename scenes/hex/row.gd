@@ -3,6 +3,7 @@ extends Node2D
 @onready var hexes: Array = get_children()
 
 var current_marker_position: int
+signal play_pop()
 
 func _ready():
 	current_marker_position = 0
@@ -10,10 +11,14 @@ func _ready():
 		var num = round(randf_range(0,1))
 		if num == 0:
 			child.queue_free()
+		else:
+			child.connect("play_pop", _on_play_pop)
 	set_health()
 
+func _on_play_pop():
+	play_pop.emit()
+
 func is_empty():
-	print("is_empty", get_child_count())
 	return get_child_count() == 0
 		
 func set_health():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b10rw4f4rat70"]
+[gd_scene load_steps=7 format=3 uid="uid://b10rw4f4rat70"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_template.gd" id="1_7yo4t"]
 [ext_resource type="Texture2D" uid="uid://16r7b36t40tr" path="res://graphics/levels/level_1/level_1_background.png" id="2_3sg5h"]
 [ext_resource type="Texture2D" uid="uid://img0perwbg0r" path="res://graphics/line/line.png" id="3_ipaoa"]
+[ext_resource type="AudioStream" uid="uid://bh66gbln8lvjf" path="res://audio/pop/pop.wav" id="4_ag5l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x5ev"]
 size = Vector2(809, 17)
@@ -87,6 +88,10 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingZone"]
 position = Vector2(371, 1195)
 shape = SubResource("RectangleShape2D_ngg1u")
+
+[node name="PopSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ag5l2")
+volume_db = -8.432
 
 [connection signal="body_entered" from="DespawnZone" to="." method="_on_despawn_zone_body_entered"]
 [connection signal="mouse_entered" from="ShootingZone" to="." method="_on_shooting_zone_mouse_entered"]

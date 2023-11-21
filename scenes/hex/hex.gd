@@ -3,6 +3,7 @@ extends StaticBody2D
 @export var health: int = 1
 
 signal update_score()
+signal play_pop()
 
 func _ready():
 	$HexImage.modulate = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),1)
@@ -11,7 +12,7 @@ func _ready():
 	
 func _physics_process(_delta):
 	if health <= 0:
-		print("here")
+		play_pop.emit()
 		queue_free()
 	
 func set_health(health2: int):

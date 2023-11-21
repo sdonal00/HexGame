@@ -5,18 +5,26 @@ func _process(_delta):
 
 func get_input():
 	if Input.is_action_just_pressed("pause"):
-		pause_game()
+		handle_pause_toggle()
 			
 func pause_game():
-	if !Globals.paused:
-		Globals.paused = true
-		get_tree().paused = true
-		$PauseMenu.visible = true
-	else:
-		Globals.paused = false
-		get_tree().paused = false
-		$PauseMenu.visible = false
+	Globals.paused = true
+	get_tree().paused = true
+	$PauseMenu.visible = true
+
+func unpause_game():
+	Globals.paused = false
+	get_tree().paused = false
+	$PauseMenu.visible = false
 
 func _on_texture_button_pressed():
-	print("pressed pause")
-	pause_game()
+	handle_pause_toggle()
+
+func handle_pause_toggle():
+	if Globals.paused:
+		unpause_game()
+	else:
+		pause_game()
+
+func _on_resume_button_pressed():
+	unpause_game()

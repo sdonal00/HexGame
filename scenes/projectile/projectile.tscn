@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://jyaou5pg4fh4"]
+[gd_scene load_steps=6 format=3 uid="uid://jyaou5pg4fh4"]
 
 [ext_resource type="Script" path="res://scenes/projectile/projectile.gd" id="1_lpxrv"]
 [ext_resource type="Texture2D" uid="uid://sfuvofktrarl" path="res://graphics/circle/circle.png" id="1_y5t6e"]
+[ext_resource type="AudioStream" uid="uid://byxsj5g3dvwvp" path="res://graphics/menus/pause/hit.wav" id="3_ounrx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bgqc0"]
 friction = 0.0
@@ -30,6 +31,10 @@ texture = ExtResource("1_y5t6e")
 
 [node name="KillTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ounrx")
+volume_db = -7.97
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

@@ -29,5 +29,6 @@ func _on_kill_timer_timeout():
 
 func _on_body_entered(body):
 	if body.has_method("hit"):
+		$HitSound.play()
 		hit_timer_reset.emit()
 		body.hit()

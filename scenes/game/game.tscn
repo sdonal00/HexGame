@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://btsqbuj7kpm41"]
+
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_b0p5a"]
+[ext_resource type="PackedScene" uid="uid://bh8db1tewsumy" path="res://scenes/levels/level_1.tscn" id="1_jspr0"]
+[ext_resource type="PackedScene" uid="uid://b75xo0iagkxcy" path="res://scenes/turret/turret.tscn" id="2_6rm36"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_b0p5a")
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Level1" parent="Level" instance=ExtResource("1_jspr0")]
+
+[node name="Turret" parent="." instance=ExtResource("2_6rm36")]
+visible = false
+position = Vector2(596, 720)
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="all_hexes_killed" from="Level/Level1" to="." method="_on_level_1_all_hexes_killed"]
+[connection signal="game_over" from="Level/Level1" to="." method="_on_level_1_game_over"]
+[connection signal="projectile_deleted" from="Level/Level1" to="." method="_on_level_1_projectile_deleted"]
+[connection signal="update_score" from="Level/Level1" to="." method="_on_level_1_update_score"]
+[connection signal="create_projectiles" from="Turret" to="." method="_on_turret_create_projectiles"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
