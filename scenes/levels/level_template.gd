@@ -30,7 +30,7 @@ func move_rows():
 			else:
 				$Rows.get_child($Rows.get_child_count() - 1).queue_free()
 				Globals.game_over = true
-				print("game over")
+				game_over.emit()
 				reverse_rows()
 
 func reverse_rows():
