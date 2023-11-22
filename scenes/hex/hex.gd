@@ -7,6 +7,7 @@ signal play_pop()
 
 func _ready():
 	$HexImage.modulate = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),1)
+	#$HexImage.modulate = Globals.colors_warm[randi_range(0, len(Globals.colors_warm) - 1)]
 	$PointLight2D.set_color($HexImage.modulate) 
 	$Label.modulate = $HexImage.modulate
 	
