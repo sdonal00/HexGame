@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://jyaou5pg4fh4"]
+
+[ext_resource type="Script" path="res://scenes/projectile/projectile.gd" id="1_lpxrv"]
+[ext_resource type="Texture2D" uid="uid://sfuvofktrarl" path="res://graphics/circle/circle.png" id="1_y5t6e"]
+[ext_resource type="AudioStream" uid="uid://byxsj5g3dvwvp" path="res://graphics/menus/pause/hit.wav" id="3_ounrx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bgqc0"]
+friction = 0.0
+bounce = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igf8s"]
+radius = 5.0
+
+[node name="Projectile" type="RigidBody2D" groups=["Projectile"]]
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_bgqc0")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_lpxrv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_igf8s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_y5t6e")
+
+[node name="KillTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ounrx")
+volume_db = -13.99
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

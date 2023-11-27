@@ -1,0 +1,244 @@
+[gd_scene load_steps=14 format=3 uid="uid://j1ojp1ske4qa"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_leve3"]
+[ext_resource type="Texture2D" uid="uid://16r7b36t40tr" path="res://graphics/levels/level_1/level_1_background.png" id="4_jb5jn"]
+[ext_resource type="Script" path="res://scenes/main/menu.gd" id="4_w2lvb"]
+[ext_resource type="PackedScene" uid="uid://bigqqxia7bi8s" path="res://scenes/background/random_background.tscn" id="5_j0rtg"]
+[ext_resource type="Texture2D" uid="uid://sgrevhgwluon" path="res://graphics/menus/pause/pause.png" id="5_nrsj2"]
+[ext_resource type="Texture2D" uid="uid://de8wojwi1g6be" path="res://graphics/menus/button/button.png" id="6_g6plw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xaeoi"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_3sqmh"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_yrmqc"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymwol"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_3hq8i"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_1q7pm"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_y2x15"]
+font_size = 50
+
+[node name="Main" type="Node"]
+script = ExtResource("1_leve3")
+
+[node name="Menu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_w2lvb")
+
+[node name="PauseMenu" type="Control" parent="Menu"]
+visible = false
+anchors_preset = 0
+offset_right = 5.0
+offset_bottom = 5.0
+
+[node name="DarkenLayer" type="Sprite2D" parent="Menu/PauseMenu"]
+modulate = Color(0, 0, 0, 0.627451)
+position = Vector2(323, 732)
+scale = Vector2(1, 2.73333)
+texture = ExtResource("4_jb5jn")
+
+[node name="Paused" type="Label" parent="Menu/PauseMenu"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 62.0
+offset_right = 434.0
+offset_bottom = 134.0
+text = "Paused
+"
+label_settings = SubResource("LabelSettings_xaeoi")
+
+[node name="ResumeButton" type="TextureButton" parent="Menu/PauseMenu"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 405.0
+offset_right = 1385.0
+offset_bottom = 1053.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("6_g6plw")
+
+[node name="Label" type="Label" parent="Menu/PauseMenu/ResumeButton"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 190.0
+offset_right = 588.0
+offset_bottom = 330.0
+scale = Vector2(2, 2)
+text = "Resume"
+label_settings = SubResource("LabelSettings_3sqmh")
+
+[node name="QuitButton" type="TextureButton" parent="Menu/PauseMenu"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 736.0
+offset_right = 1395.0
+offset_bottom = 1383.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("6_g6plw")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="Menu/PauseMenu/QuitButton"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 190.0
+offset_right = 723.0
+offset_bottom = 330.0
+scale = Vector2(2, 2)
+text = "Quit
+"
+label_settings = SubResource("LabelSettings_3sqmh")
+
+[node name="GameHud" type="Control" parent="Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Points" type="Label" parent="Menu/GameHud"]
+layout_mode = 2
+offset_left = 337.0
+offset_top = 3.0
+offset_right = 357.0
+offset_bottom = 55.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "0"
+label_settings = SubResource("LabelSettings_yrmqc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Menu/GameHud"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 44.0
+offset_bottom = 57.0
+size_flags_horizontal = 0
+texture_normal = ExtResource("5_nrsj2")
+
+[node name="FFButton" type="TextureButton" parent="Menu/GameHud"]
+layout_mode = 2
+offset_left = 675.0
+offset_top = 14.0
+offset_right = 707.0
+offset_bottom = 59.0
+size_flags_horizontal = 0
+texture_normal = ExtResource("5_nrsj2")
+
+[node name="HomeMenu" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_top = 2.0
+offset_right = 6.0
+offset_bottom = 6.0
+
+[node name="RandomBackground" parent="Menu/HomeMenu" instance=ExtResource("5_j0rtg")]
+
+[node name="Label" type="Label" parent="Menu/HomeMenu"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 45.0
+offset_right = 602.0
+offset_bottom = 185.0
+text = "HexaGone"
+label_settings = SubResource("LabelSettings_ymwol")
+
+[node name="PlayButton" type="TextureButton" parent="Menu/HomeMenu"]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 395.0
+offset_right = 1387.0
+offset_bottom = 1043.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("6_g6plw")
+
+[node name="Label" type="Label" parent="Menu/HomeMenu/PlayButton"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 125.0
+offset_right = 411.0
+offset_bottom = 197.0
+scale = Vector2(5, 5)
+text = "Play"
+label_settings = SubResource("LabelSettings_3hq8i")
+
+[node name="GameOverMenu" type="Control" parent="Menu"]
+visible = false
+anchors_preset = 0
+offset_right = 8.0
+offset_bottom = 7.0
+
+[node name="DarkenLayer" type="Sprite2D" parent="Menu/GameOverMenu"]
+modulate = Color(0, 0, 0, 0.627451)
+position = Vector2(323, 732)
+scale = Vector2(1, 2.73333)
+texture = ExtResource("4_jb5jn")
+
+[node name="Label" type="Label" parent="Menu/GameOverMenu"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 44.0
+offset_right = 632.0
+offset_bottom = 184.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_ymwol")
+
+[node name="ContinueButton" type="TextureButton" parent="Menu/GameOverMenu"]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 382.0
+offset_right = 1381.0
+offset_bottom = 1030.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("6_g6plw")
+
+[node name="Label" type="Label" parent="Menu/GameOverMenu/ContinueButton"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 155.0
+offset_right = 332.0
+offset_bottom = 227.0
+scale = Vector2(4, 4)
+text = "Continue"
+label_settings = SubResource("LabelSettings_1q7pm")
+
+[node name="QuitButton" type="TextureButton" parent="Menu/GameOverMenu"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 676.0
+offset_right = 1373.0
+offset_bottom = 1324.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("6_g6plw")
+
+[node name="Label" type="Label" parent="Menu/GameOverMenu/QuitButton"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 155.0
+offset_right = 435.0
+offset_bottom = 227.0
+scale = Vector2(4, 4)
+text = "Quit"
+label_settings = SubResource("LabelSettings_y2x15")
+
+[connection signal="pressed" from="Menu/PauseMenu/ResumeButton" to="Menu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Menu/PauseMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Menu/GameHud/TextureButton" to="Menu" method="_on_texture_button_pressed"]
+[connection signal="button_down" from="Menu/GameHud/FFButton" to="." method="_on_ff_button_button_down"]
+[connection signal="button_up" from="Menu/GameHud/FFButton" to="." method="_on_ff_button_button_up"]
+[connection signal="pressed" from="Menu/HomeMenu/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/GameOverMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Menu/GameOverMenu/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bigqqxia7bi8s"]
+
+[ext_resource type="PackedScene" uid="uid://dow5ndphfex8q" path="res://scenes/hex/row.tscn" id="1_lr4x6"]
+[ext_resource type="Texture2D" uid="uid://16r7b36t40tr" path="res://graphics/levels/level_1/level_1_background.png" id="2_88bog"]
+
+[node name="RandomBackground" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(323, 732)
+scale = Vector2(1, 2.73333)
+texture = ExtResource("2_88bog")
+
+[node name="Row6" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 285)
+
+[node name="Row7" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 366)
+
+[node name="Row8" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 447)
+
+[node name="Row9" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 528)
+
+[node name="Row10" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 609)
+
+[node name="Row11" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 690)
+
+[node name="Row12" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 771)
+
+[node name="Row13" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 851)
+
+[node name="Row14" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 932)
+
+[node name="Row15" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 1013)
+
+[node name="Row16" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 1094)
+
+[node name="Row17" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 1175)
+
+[node name="Row18" parent="." instance=ExtResource("1_lr4x6")]
+position = Vector2(0, 1256)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.627451)
+position = Vector2(323, 732)
+scale = Vector2(1, 2.73333)
+texture = ExtResource("2_88bog")

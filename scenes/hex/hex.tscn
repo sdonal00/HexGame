@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://durcqx6stwqoq"]
+
+[ext_resource type="Texture2D" uid="uid://cmc407475qi2j" path="res://graphics/hex/hex.png" id="1_4kp73"]
+[ext_resource type="Script" path="res://scenes/hex/hex.gd" id="1_mo4oo"]
+[ext_resource type="Texture2D" uid="uid://dg4jjld8xccbu" path="res://graphics/lights/light.png" id="3_wxbdq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qc51j"]
+font_size = 35
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sagvx"]
+polygon = PackedVector2Array(-19, -32, -37, 0, -19, 32, 19, 32, 37, 0, 19, -32)
+
+[node name="Hex" type="StaticBody2D" groups=["Hex"]]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_mo4oo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.12, 0.12)
+polygon = PackedVector2Array(-373, 0, -186, -324, 187, -324, 374, 0, 187, 323, -187, 323)
+
+[node name="HexImage" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_4kp73")
+
+[node name="HexImage2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_4kp73")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -27.0
+offset_right = 19.0
+offset_bottom = 25.0
+text = "1"
+label_settings = SubResource("LabelSettings_qc51j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
+texture = ExtResource("3_wxbdq")
+texture_scale = 0.2
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_sagvx")

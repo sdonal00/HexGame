@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh8db1tewsumy"]
+
+[ext_resource type="PackedScene" uid="uid://b10rw4f4rat70" path="res://scenes/levels/level_template.tscn" id="1_f8tc6"]
+
+[node name="Level1" instance=ExtResource("1_f8tc6")]
+
+[node name="DespawnZone" parent="." index="1"]
+position = Vector2(-623, 200)
+
+[node name="CollisionShape2D" parent="DespawnZone" index="0"]
+position = Vector2(989.25, 1097)
+
+[node name="StaticBody2D" parent="." index="2"]
+position = Vector2(-19, 7)
+
+[node name="CollisionPolygon2D" parent="StaticBody2D" index="0"]
+position = Vector2(0.999998, -1)
+polygon = PackedVector2Array(18, 1278, 18, -6, 738, -6, 738, 1278, 822, 1281, 836, -114, -74, -115, -64, 1281)
