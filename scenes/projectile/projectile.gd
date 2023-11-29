@@ -11,7 +11,6 @@ func _ready():
 	linear_damp = 0
 	
 func _physics_process(_delta):
-	#print(linear_velocity)
 	pass
 	#todo: check if object is stuck in area (timer once no damage is done to hexes)
 

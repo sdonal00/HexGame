@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://j1ojp1ske4qa"]
+[gd_scene load_steps=15 format=3 uid="uid://j1ojp1ske4qa"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_leve3"]
 [ext_resource type="Texture2D" uid="uid://16r7b36t40tr" path="res://graphics/levels/level_1/level_1_background.png" id="4_jb5jn"]
 [ext_resource type="Script" path="res://scenes/main/menu.gd" id="4_w2lvb"]
 [ext_resource type="PackedScene" uid="uid://bigqqxia7bi8s" path="res://scenes/background/random_background.tscn" id="5_j0rtg"]
 [ext_resource type="Texture2D" uid="uid://sgrevhgwluon" path="res://graphics/menus/pause/pause.png" id="5_nrsj2"]
+[ext_resource type="Texture2D" uid="uid://ydvttmnn0k6d" path="res://graphics/menus/fastforward/fastforward.png" id="6_5mkp0"]
 [ext_resource type="Texture2D" uid="uid://de8wojwi1g6be" path="res://graphics/menus/button/button.png" id="6_g6plw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xaeoi"]
@@ -121,6 +122,19 @@ label_settings = SubResource("LabelSettings_yrmqc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Highscore" type="Label" parent="Menu/GameHud"]
+layout_mode = 2
+offset_left = 61.0
+offset_top = 1.0
+offset_right = 164.0
+offset_bottom = 53.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Best 0"
+label_settings = SubResource("LabelSettings_yrmqc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextureButton" type="TextureButton" parent="Menu/GameHud"]
 layout_mode = 2
 offset_left = 12.0
@@ -132,12 +146,13 @@ texture_normal = ExtResource("5_nrsj2")
 
 [node name="FFButton" type="TextureButton" parent="Menu/GameHud"]
 layout_mode = 2
-offset_left = 675.0
-offset_top = 14.0
-offset_right = 707.0
-offset_bottom = 59.0
+offset_left = 671.0
+offset_top = 9.0
+offset_right = 1171.0
+offset_bottom = 509.0
+scale = Vector2(0.0815109, 0.0808575)
 size_flags_horizontal = 0
-texture_normal = ExtResource("5_nrsj2")
+texture_normal = ExtResource("6_5mkp0")
 
 [node name="HomeMenu" type="Control" parent="Menu"]
 anchors_preset = 0
@@ -237,8 +252,7 @@ label_settings = SubResource("LabelSettings_y2x15")
 [connection signal="pressed" from="Menu/PauseMenu/ResumeButton" to="Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/PauseMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Menu/GameHud/TextureButton" to="Menu" method="_on_texture_button_pressed"]
-[connection signal="button_down" from="Menu/GameHud/FFButton" to="." method="_on_ff_button_button_down"]
-[connection signal="button_up" from="Menu/GameHud/FFButton" to="." method="_on_ff_button_button_up"]
+[connection signal="pressed" from="Menu/GameHud/FFButton" to="." method="_on_ff_button_pressed"]
 [connection signal="pressed" from="Menu/HomeMenu/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Menu/GameOverMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Menu/GameOverMenu/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -2,6 +2,7 @@ extends Node
 
 var game_scene: PackedScene = preload("res://scenes/game/game.tscn")
 var background_scene: PackedScene = preload("res://scenes/background/random_background.tscn")
+var ff = false
 
 func _on_turret_create_projectiles(projectile):
 	projectile.connect("hit_timer_reset", hit_timer_reset)
@@ -9,8 +10,8 @@ func _on_turret_create_projectiles(projectile):
 	hit_timer_reset()
 
 func _ready():
-	print(OS.get_name())
 	$Menu/GameHud.visible = true
+	$Menu/GameHud/Highscore.set_text("Best " + str(Globals.highscore))
 
 func hit_timer_reset():
 	$Game/HitTimer.stop()
@@ -28,13 +29,19 @@ func _on_level_1_all_hexes_killed():
 	start_round()
 	
 func start_round():
+	if ff:
+		stop_fast_forward()
 	Globals.can_shoot = true
 	$Game/HitTimer.stop()
 	kill_children($Game/Projectiles)
 	$Game/Level/Level1.start_next_round()
+	$Menu/GameHud/Highscore.set_text("Best " + str(Globals.highscore))
 	
 func _on_level_1_update_score():
 	$Menu/GameHud/Points.set_text(str(Globals.points))
+	if Globals.points > Globals.highscore:
+		Globals.highscore = Globals.points
+	#$Menu/GameHud/Highscore.set_text("Best " + str(Globals.highscore))
 	
 func _on_level_1_projectile_deleted():
 	#1 before last projectile is freed
@@ -80,11 +87,23 @@ func set_proj_speed(modifier, mul):
 		else:
 			projecile.linear_velocity /= modifier
 			
-func _on_ff_button_button_up():
-	set_proj_speed(3, false)
-
-func _on_ff_button_button_down():
-	set_proj_speed(3, true)
 
 func _on_continue_button_pressed():
 	$Menu/GameOverMenu.visible = false
+	#Logic to show ad
+	Globals.game_over = false
+
+
+func fast_forward():
+		ff = true
+		set_proj_speed(3, true)
+	
+func stop_fast_forward():
+		ff = false
+		set_proj_speed(3, false)
+
+func _on_ff_button_pressed():
+	if ff:
+		stop_fast_forward()
+	else:
+		fast_forward()

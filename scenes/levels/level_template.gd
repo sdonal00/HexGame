@@ -13,6 +13,7 @@ func _ready():
 	move_rows()
 	
 func start_next_round():
+	Globals.save_highscore()
 	if !Globals.game_over:
 		Globals.current_round += 1
 		call_deferred("create_row")
@@ -22,8 +23,7 @@ func move_rows():
 	var rows = $Rows.get_children()
 	for i in len(rows):
 		if i < len(row_markers) - 1 and i < len(rows) and len(row_markers) > len(rows)-i:
-			var tween = get_tree().create_tween().set_parallel(true)
-			tween.tween_property(rows[i], "position", row_markers[len(rows)-i].position, 1).set_trans(Tween.TRANS_SINE)
+			continue
 		else:
 			if rows[0].is_empty():
 				rows[0].queue_free()
@@ -31,16 +31,21 @@ func move_rows():
 				$Rows.get_child($Rows.get_child_count() - 1).queue_free()
 				Globals.game_over = true
 				game_over.emit()
-				reverse_rows()
-
-func reverse_rows():
-	Globals.game_over = false
-	var rows = $Rows.get_children()
+				#reverse_rows()
+				#Globals.game_over = false
+				return
 	for i in len(rows):
-		if i < len(row_markers) - 1 and i < len(rows) and len(row_markers) >= len(rows)-i:
+		if i < len(row_markers) - 1 and i < len(rows) and len(row_markers) > len(rows)-i:
 			var tween = get_tree().create_tween().set_parallel(true)
-			tween.tween_property(rows[i], "position", row_markers[len(rows) - i - 1].position, 1).set_trans(Tween.TRANS_SINE)
-	
+			tween.tween_property(rows[i], "position", row_markers[len(rows)-i].position, 1).set_trans(Tween.TRANS_SINE)
+
+#func reverse_rows():
+#	var rows = $Rows.get_children()
+#	for i in len(rows):
+#		if i < len(row_markers) - 1 and i < len(rows) and len(row_markers) >= len(rows)-i:
+#			var tween = get_tree().create_tween().set_parallel(true)
+#			tween.tween_property(rows[i], "position", row_markers[len(rows) - i - 1].position, 1).set_trans(Tween.TRANS_SINE)
+
 func create_row():
 	var scene = row_scene.instantiate()
 	$Rows.add_child(scene)

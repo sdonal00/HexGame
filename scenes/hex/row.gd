@@ -8,7 +8,7 @@ signal play_pop()
 func _ready():
 	current_marker_position = 0
 	for child in hexes:
-		var num = round(randf_range(0,1))
+		var num = round(randf_range(0,1.5))
 		if num == 0:
 			child.queue_free()
 		else:
