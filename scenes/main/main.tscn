@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://j1ojp1ske4qa"]
+[gd_scene load_steps=17 format=3 uid="uid://j1ojp1ske4qa"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_leve3"]
 [ext_resource type="Texture2D" uid="uid://16r7b36t40tr" path="res://graphics/levels/level_1/level_1_background.png" id="4_jb5jn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://sgrevhgwluon" path="res://graphics/menus/pause/pause.png" id="5_nrsj2"]
 [ext_resource type="Texture2D" uid="uid://ydvttmnn0k6d" path="res://graphics/menus/fastforward/fastforward.png" id="6_5mkp0"]
 [ext_resource type="Texture2D" uid="uid://de8wojwi1g6be" path="res://graphics/menus/button/button.png" id="6_g6plw"]
+[ext_resource type="PackedScene" uid="uid://iy12nk8vefwy" path="res://addons/admob/sample/Rewarded.tscn" id="8_0imel"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xaeoi"]
 font_size = 50
@@ -15,7 +16,7 @@ font_size = 50
 font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_yrmqc"]
-font_size = 35
+font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_ymwol"]
 font_size = 100
@@ -28,6 +29,9 @@ font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_y2x15"]
 font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7d35"]
+font_size = 100
 
 [node name="Main" type="Node"]
 script = ExtResource("1_leve3")
@@ -43,8 +47,9 @@ script = ExtResource("4_w2lvb")
 [node name="PauseMenu" type="Control" parent="Menu"]
 visible = false
 anchors_preset = 0
+offset_top = 103.0
 offset_right = 5.0
-offset_bottom = 5.0
+offset_bottom = 108.0
 
 [node name="DarkenLayer" type="Sprite2D" parent="Menu/PauseMenu"]
 modulate = Color(0, 0, 0, 0.627451)
@@ -106,15 +111,16 @@ label_settings = SubResource("LabelSettings_3sqmh")
 visible = false
 layout_mode = 1
 anchors_preset = 0
+offset_top = 87.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 127.0
 
 [node name="Points" type="Label" parent="Menu/GameHud"]
 layout_mode = 2
-offset_left = 337.0
+offset_left = 328.0
 offset_top = 3.0
 offset_right = 357.0
-offset_bottom = 55.0
+offset_bottom = 75.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "0"
@@ -123,10 +129,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Highscore" type="Label" parent="Menu/GameHud"]
+visible = false
 layout_mode = 2
-offset_left = 61.0
+offset_left = 77.0
 offset_top = 1.0
-offset_right = 164.0
+offset_right = 180.0
 offset_bottom = 53.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
@@ -141,24 +148,25 @@ offset_left = 12.0
 offset_top = 12.0
 offset_right = 44.0
 offset_bottom = 57.0
+scale = Vector2(1.62063, 1.51384)
 size_flags_horizontal = 0
 texture_normal = ExtResource("5_nrsj2")
 
 [node name="FFButton" type="TextureButton" parent="Menu/GameHud"]
 layout_mode = 2
-offset_left = 671.0
+offset_left = 650.0
 offset_top = 9.0
-offset_right = 1171.0
+offset_right = 1150.0
 offset_bottom = 509.0
-scale = Vector2(0.0815109, 0.0808575)
+scale = Vector2(0.11848, 0.0988256)
 size_flags_horizontal = 0
 texture_normal = ExtResource("6_5mkp0")
 
 [node name="HomeMenu" type="Control" parent="Menu"]
 anchors_preset = 0
-offset_top = 2.0
+offset_top = 118.0
 offset_right = 6.0
-offset_bottom = 6.0
+offset_bottom = 122.0
 
 [node name="RandomBackground" parent="Menu/HomeMenu" instance=ExtResource("5_j0rtg")]
 
@@ -193,8 +201,10 @@ label_settings = SubResource("LabelSettings_3hq8i")
 [node name="GameOverMenu" type="Control" parent="Menu"]
 visible = false
 anchors_preset = 0
-offset_right = 8.0
-offset_bottom = 7.0
+offset_left = 1.52588e-05
+offset_top = 117.0
+offset_right = 8.00002
+offset_bottom = 124.0
 
 [node name="DarkenLayer" type="Sprite2D" parent="Menu/GameOverMenu"]
 modulate = Color(0, 0, 0, 0.627451)
@@ -212,11 +222,11 @@ text = "Game Over"
 label_settings = SubResource("LabelSettings_ymwol")
 
 [node name="ContinueButton" type="TextureButton" parent="Menu/GameOverMenu"]
-layout_mode = 0
-offset_left = 229.0
-offset_top = 382.0
-offset_right = 1381.0
-offset_bottom = 1030.0
+layout_mode = 2
+offset_left = 235.0
+offset_top = 404.0
+offset_right = 1387.0
+offset_bottom = 1052.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("6_g6plw")
 
@@ -232,9 +242,9 @@ label_settings = SubResource("LabelSettings_1q7pm")
 
 [node name="QuitButton" type="TextureButton" parent="Menu/GameOverMenu"]
 layout_mode = 0
-offset_left = 221.0
+offset_left = 235.0
 offset_top = 676.0
-offset_right = 1373.0
+offset_right = 1387.0
 offset_bottom = 1324.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("6_g6plw")
@@ -249,6 +259,30 @@ scale = Vector2(4, 4)
 text = "Quit"
 label_settings = SubResource("LabelSettings_y2x15")
 
+[node name="AdView" type="Control" parent="Menu"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Rewarded" parent="Menu/AdView" instance=ExtResource("8_0imel")]
+layout_mode = 0
+offset_left = 2.00001
+offset_top = 3.05176e-05
+offset_right = 71.0
+offset_bottom = 101.0
+scale = Vector2(4.37333, 2.96829)
+
+[node name="Label" type="Label" parent="Menu/AdView"]
+visible = false
+layout_mode = 0
+offset_left = 86.0
+offset_top = 91.0
+offset_right = 614.0
+offset_bottom = 231.0
+text = "Loading ad"
+label_settings = SubResource("LabelSettings_g7d35")
+
 [connection signal="pressed" from="Menu/PauseMenu/ResumeButton" to="Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/PauseMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Menu/GameHud/TextureButton" to="Menu" method="_on_texture_button_pressed"]
@@ -256,3 +290,5 @@ label_settings = SubResource("LabelSettings_y2x15")
 [connection signal="pressed" from="Menu/HomeMenu/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Menu/GameOverMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Menu/GameOverMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="earned_respawn" from="Menu/AdView/Rewarded" to="." method="_on_rewarded_earned_respawn"]
+[connection signal="hide_ad" from="Menu/AdView/Rewarded" to="Menu" method="_on_rewarded_hide_ad"]

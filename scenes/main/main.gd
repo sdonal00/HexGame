@@ -8,6 +8,9 @@ func _on_turret_create_projectiles(projectile):
 	projectile.connect("hit_timer_reset", hit_timer_reset)
 	$Game/Projectiles.add_child(projectile)
 	hit_timer_reset()
+	
+func _on_show_ff_button():
+	$Menu/GameHud/FFButton.visible = true
 
 func _ready():
 	$Menu/GameHud.visible = true
@@ -31,7 +34,9 @@ func _on_level_1_all_hexes_killed():
 func start_round():
 	if ff:
 		stop_fast_forward()
+	Globals.can_ff = false
 	Globals.can_shoot = true
+	$Menu/GameHud/FFButton.visible = false
 	$Game/HitTimer.stop()
 	kill_children($Game/Projectiles)
 	$Game/Level/Level1.start_next_round()
@@ -49,6 +54,7 @@ func _on_level_1_projectile_deleted():
 		start_round()
 
 func _on_level_1_game_over():
+	$Menu/AdView/Rewarded.load_ad()
 	$Menu/GameOverMenu.visible = true
 
 func _on_play_button_pressed():
@@ -60,6 +66,7 @@ func _on_play_button_pressed():
 	game.connect("level_1_all_hexes_killed", _on_level_1_all_hexes_killed)
 	game.connect("hit_timer_timeout", _on_hit_timer_timeout)
 	game.connect("turret_create_projectiles", _on_turret_create_projectiles)
+	game.connect("show_ff_button", _on_show_ff_button)
 	add_child(game)
 	move_child(game, 0)
 	$Menu/HomeMenu.visible = false
@@ -75,6 +82,7 @@ func _on_quit_button_pressed():
 	$Menu/HomeMenu.visible = true
 	$Menu/GameHud.visible = false
 	$Menu/PauseMenu.visible = false
+	Globals.current_round = 1
 	var bg = background_scene.instantiate()
 	$Menu/HomeMenu.add_child(bg)
 	$Menu/HomeMenu.move_child(bg, 0)
@@ -86,24 +94,27 @@ func set_proj_speed(modifier, mul):
 			projecile.linear_velocity *= modifier
 		else:
 			projecile.linear_velocity /= modifier
-			
 
 func _on_continue_button_pressed():
+	$Menu/AdView.visible = true
+	$Menu/AdView/Rewarded.show_ad()
+
+func fast_forward():
+	ff = true
+	set_proj_speed(3, true)
+	
+func stop_fast_forward():
+	ff = false
+	set_proj_speed(3, false)
+
+func _on_ff_button_pressed():
+	if Globals.can_ff:
+		if ff:
+			stop_fast_forward()
+		else:
+			fast_forward()
+
+func _on_rewarded_earned_respawn():
 	$Menu/GameOverMenu.visible = false
 	#Logic to show ad
 	Globals.game_over = false
-
-
-func fast_forward():
-		ff = true
-		set_proj_speed(3, true)
-	
-func stop_fast_forward():
-		ff = false
-		set_proj_speed(3, false)
-
-func _on_ff_button_pressed():
-	if ff:
-		stop_fast_forward()
-	else:
-		fast_forward()

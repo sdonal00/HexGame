@@ -6,10 +6,18 @@ signal update_score()
 signal play_pop()
 
 func _ready():
-	#$HexImage.modulate = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),1)
-	var index = randi_range(0, len(Globals.selected_colors) - 1)
-	$HexImage.modulate = Globals.selected_colors[index]
-	$PointLight2D.set_color($HexImage.modulate) 
+	var color1 = randf_range(0,1)
+	var color2 = randf_range(0,1)
+	var color3 = randf_range(0,1)
+	while(color1 + color2 + color3 < 1):
+		color1 = randf_range(0,1)
+		color2 = randf_range(0,1)
+		color3 = randf_range(0,1)
+	$HexImage.modulate = Color(color1,color2,color3,1)
+	
+	#var index = randi_range(0, len(Globals.selected_colors) - 1)
+	#$HexImage.modulate = Globals.selected_colors[index]
+	#$PointLight2D.set_color($HexImage.modulate) 
 	$Label.modulate = $HexImage.modulate
 	
 func _physics_process(_delta):

@@ -28,3 +28,6 @@ func handle_pause_toggle():
 
 func _on_resume_button_pressed():
 	unpause_game()
+
+func _on_rewarded_hide_ad():
+	$AdView.visible = false

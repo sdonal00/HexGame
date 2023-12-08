@@ -1,6 +1,7 @@
 extends Node2D
 
 signal create_projectiles(projectile: StaticBody2D)
+signal show_ff_button()
 
 var projectile_scene: PackedScene = preload("res://scenes/projectile/projectile.tscn")
 var line_scene: PackedScene = preload("res://scenes/turret/line.tscn")
@@ -38,6 +39,7 @@ func get_input():
 	if !Globals.game_over:
 		if Input.is_action_just_pressed("primary") and !shooting and Globals.mouse_in_shooting_zone and Globals.can_shoot:
 			position = get_global_mouse_position()
+			#position = Vector2(120, 1200)
 			visible = true
 			clicked = true
 		elif Input.is_action_pressed("primary") and !shooting and Globals.mouse_in_shooting_zone and Globals.can_shoot and clicked:
@@ -47,20 +49,23 @@ func get_input():
 			spawn_lines()
 			visible = true
 		elif Input.is_action_just_released("primary") and !shooting and Globals.mouse_in_shooting_zone and Globals.can_shoot and clicked:
-			shooting = true
-			Globals.can_shoot = false
 			var released_position = get_global_mouse_position()
-			for i in projectile_count:
-				var projectile = projectile_scene.instantiate()
-				projectile.position = position
-				projectile.direction = direction
-				if projectile.direction.x == 0 and projectile.direction.y == 0:
-					projectile.direction = Vector2.UP
-				projectile.speed = min(max(position.distance_to(released_position) * 2, 200), 600)
-				create_projectiles.emit(projectile)
-				await get_tree().create_timer(0.1).timeout
-			shooting = false
-			projectile_count += 1
+			if position.distance_to(released_position) > 30:
+				Globals.can_shoot = false
+				shooting = true
+				for i in projectile_count:
+					var projectile = projectile_scene.instantiate()
+					projectile.position = position
+					projectile.direction = direction
+					if projectile.direction.x == 0 and projectile.direction.y == 0:
+						projectile.direction = Vector2.UP
+					projectile.speed = min(max(position.distance_to(released_position) * 2, 400), 1000)
+					create_projectiles.emit(projectile)
+					await get_tree().create_timer(0.1).timeout
+				shooting = false
+				Globals.can_ff = true
+				show_ff_button.emit()
+				projectile_count += 1
 			clicked = false
 		elif !shooting:
 			clicked = false

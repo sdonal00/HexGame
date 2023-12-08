@@ -30,10 +30,10 @@ Color8(255,160,122),
 Color8(255,69,0)]
 var colors_all: Array = []
 
-var selected_colors = colors_cool
+var selected_colors = colors_cool + colors_warm
 
 var highscore = 0
-
+var can_ff = false
 var file_name = "user://highscore.dat"
 
 func load_highscore():

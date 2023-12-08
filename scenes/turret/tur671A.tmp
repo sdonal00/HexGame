@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b75xo0iagkxcy"]
+
+[ext_resource type="Texture2D" uid="uid://sfuvofktrarl" path="res://graphics/circle/circle.png" id="1_r80k8"]
+[ext_resource type="Script" path="res://scenes/turret/turret.gd" id="1_ro1mp"]
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_ro1mp")
+
+[node name="DotImage" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.615686)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_r80k8")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(28, 0)
+
+[node name="Lines" type="Node2D" parent="."]

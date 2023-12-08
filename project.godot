@@ -81,9 +81,11 @@ Globals="*res://globals/globals.gd"
 [display]
 
 window/size/viewport_width=720
-window/size/viewport_height=1280
+window/size/viewport_height=1560
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/handheld/orientation=1
+mouse_cursor/size/viewport_height=1560
 
 [editor_plugins]
 
@@ -118,5 +120,4 @@ common/physics_ticks_per_second=360
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-anti_aliasing/quality/msaa_2d=3
 anti_aliasing/quality/screen_space_aa=1

@@ -6,6 +6,7 @@ signal level_1_update_score()
 signal level_1_all_hexes_killed()
 signal hit_timer_timeout()
 signal turret_create_projectiles(projectile)
+signal show_ff_button()
 
 func _on_level_1_all_hexes_killed():
 	level_1_all_hexes_killed.emit()
@@ -24,3 +25,6 @@ func _on_turret_create_projectiles(projectile):
 
 func _on_hit_timer_timeout():
 	hit_timer_timeout.emit()
+
+func _on_turret_show_ff_button():
+	show_ff_button.emit()

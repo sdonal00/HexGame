@@ -39,9 +39,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 energy = 2.0
 texture = ExtResource("3_wxbdq")
 texture_scale = 0.2
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_sagvx")

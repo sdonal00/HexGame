@@ -4,8 +4,12 @@
 
 [node name="Level1" instance=ExtResource("1_f8tc6")]
 
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1.54767, 1.19191)
+
 [node name="DespawnZone" parent="." index="1"]
 position = Vector2(-623, 200)
+scale = Vector2(1.00647, 1.25569)
 
 [node name="CollisionShape2D" parent="DespawnZone" index="0"]
 position = Vector2(989.25, 1097)
@@ -15,4 +19,12 @@ position = Vector2(-19, 7)
 
 [node name="CollisionPolygon2D" parent="StaticBody2D" index="0"]
 position = Vector2(0.999998, -1)
-polygon = PackedVector2Array(18, 1278, 18, -6, 738, -6, 738, 1278, 822, 1281, 836, -114, -74, -115, -64, 1281)
+scale = Vector2(1.00128, 1.22181)
+polygon = PackedVector2Array(16.9783, 1275.16, 16.9783, -5.72921, 738.057, -5.72921, 739.055, 1275.16, 1134.55, 1289.07, 1162.51, -432.146, -403.484, -443.604, -346.557, 1274.34)
+
+[node name="ShootingZone" parent="." index="6"]
+position = Vector2(4, -57)
+scale = Vector2(0.956308, 1.15562)
+
+[node name="CollisionShape2D" parent="ShootingZone" index="0"]
+position = Vector2(353.439, 1208.88)

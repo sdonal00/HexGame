@@ -26,4 +26,5 @@ one_shot = true
 [connection signal="projectile_deleted" from="Level/Level1" to="." method="_on_level_1_projectile_deleted"]
 [connection signal="update_score" from="Level/Level1" to="." method="_on_level_1_update_score"]
 [connection signal="create_projectiles" from="Turret" to="." method="_on_turret_create_projectiles"]
+[connection signal="show_ff_button" from="Turret" to="." method="_on_turret_show_ff_button"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
