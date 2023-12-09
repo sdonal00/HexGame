@@ -28,3 +28,6 @@ scale = Vector2(0.956308, 1.15562)
 
 [node name="CollisionShape2D" parent="ShootingZone" index="0"]
 position = Vector2(353.439, 1208.88)
+
+[node name="PopSound" parent="." index="7"]
+volume_db = 0.0

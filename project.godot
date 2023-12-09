@@ -83,7 +83,6 @@ Globals="*res://globals/globals.gd"
 window/size/viewport_width=720
 window/size/viewport_height=1560
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 window/handheld/orientation=1
 mouse_cursor/size/viewport_height=1560
 

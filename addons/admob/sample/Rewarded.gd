@@ -29,6 +29,7 @@ var full_screen_content_callback := FullScreenContentCallback.new()
 
 signal hide_ad()
 signal earned_respawn()
+signal loaded_ad_done()
 
 func _ready():
 	on_user_earned_reward_listener.on_user_earned_reward = on_user_earned_reward
@@ -70,6 +71,7 @@ func on_rewarded_ad_loaded(rewarded_ad : RewardedAd) -> void:
 	server_side_verification_options.user_id = "user_id_test"
 	rewarded_ad.set_server_side_verification_options(server_side_verification_options)
 	self.rewarded_ad = rewarded_ad
+	loaded_ad_done.emit()
 	show_ad()
 
 func show_ad():
@@ -81,6 +83,7 @@ func load_ad():
 
 func on_user_earned_reward(rewarded_item : RewardedItem):
 	earned_respawn.emit()
+	destroy()
 
 func _on_destroy_pressed():
 	destroy()

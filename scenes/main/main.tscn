@@ -12,11 +12,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_xaeoi"]
 font_size = 50
 
-[sub_resource type="LabelSettings" id="LabelSettings_3sqmh"]
-font_size = 100
-
 [sub_resource type="LabelSettings" id="LabelSettings_yrmqc"]
 font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_3sqmh"]
+font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_ymwol"]
 font_size = 100
@@ -59,38 +59,53 @@ texture = ExtResource("4_jb5jn")
 
 [node name="Paused" type="Label" parent="Menu/PauseMenu"]
 layout_mode = 0
-offset_left = 258.0
 offset_top = 62.0
-offset_right = 434.0
+offset_right = 720.0
 offset_bottom = 134.0
 text = "Paused
 "
 label_settings = SubResource("LabelSettings_xaeoi")
+horizontal_alignment = 1
+
+[node name="Highscore" type="Label" parent="Menu/PauseMenu"]
+layout_mode = 2
+offset_left = -1.0
+offset_top = 135.0
+offset_right = 722.0
+offset_bottom = 207.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Best 0"
+label_settings = SubResource("LabelSettings_yrmqc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ResumeButton" type="TextureButton" parent="Menu/PauseMenu"]
 layout_mode = 0
-offset_left = 233.0
+offset_left = 250.0
 offset_top = 405.0
-offset_right = 1385.0
+offset_right = 1402.0
 offset_bottom = 1053.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("6_g6plw")
 
 [node name="Label" type="Label" parent="Menu/PauseMenu/ResumeButton"]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 190.0
-offset_right = 588.0
-offset_bottom = 330.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 577.0
+offset_bottom = 325.0
 scale = Vector2(2, 2)
 text = "Resume"
 label_settings = SubResource("LabelSettings_3sqmh")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="QuitButton" type="TextureButton" parent="Menu/PauseMenu"]
 layout_mode = 0
-offset_left = 238.0
+offset_left = 250.0
 offset_top = 736.0
-offset_right = 1395.0
+offset_right = 1407.0
 offset_bottom = 1383.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("6_g6plw")
@@ -98,14 +113,15 @@ ignore_texture_size = true
 
 [node name="Label" type="Label" parent="Menu/PauseMenu/QuitButton"]
 layout_mode = 0
-offset_left = 335.0
-offset_top = 190.0
-offset_right = 723.0
-offset_bottom = 330.0
+offset_top = -10.0
+offset_right = 572.0
+offset_bottom = 318.0
 scale = Vector2(2, 2)
 text = "Quit
 "
 label_settings = SubResource("LabelSettings_3sqmh")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameHud" type="Control" parent="Menu"]
 visible = false
@@ -117,27 +133,13 @@ offset_bottom = 127.0
 
 [node name="Points" type="Label" parent="Menu/GameHud"]
 layout_mode = 2
-offset_left = 328.0
+offset_left = 72.0
 offset_top = 3.0
-offset_right = 357.0
+offset_right = 645.0
 offset_bottom = 75.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "0"
-label_settings = SubResource("LabelSettings_yrmqc")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Highscore" type="Label" parent="Menu/GameHud"]
-visible = false
-layout_mode = 2
-offset_left = 77.0
-offset_top = 1.0
-offset_right = 180.0
-offset_bottom = 53.0
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
-text = "Best 0"
 label_settings = SubResource("LabelSettings_yrmqc")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -172,12 +174,12 @@ offset_bottom = 122.0
 
 [node name="Label" type="Label" parent="Menu/HomeMenu"]
 layout_mode = 0
-offset_left = 101.0
 offset_top = 45.0
-offset_right = 602.0
+offset_right = 721.0
 offset_bottom = 185.0
 text = "HexaGone"
 label_settings = SubResource("LabelSettings_ymwol")
+horizontal_alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="Menu/HomeMenu"]
 layout_mode = 0
@@ -190,13 +192,14 @@ texture_normal = ExtResource("6_g6plw")
 
 [node name="Label" type="Label" parent="Menu/HomeMenu/PlayButton"]
 layout_mode = 0
-offset_left = 310.0
+offset_left = 20.0
 offset_top = 125.0
-offset_right = 411.0
+offset_right = 244.0
 offset_bottom = 197.0
 scale = Vector2(5, 5)
 text = "Play"
 label_settings = SubResource("LabelSettings_3hq8i")
+horizontal_alignment = 1
 
 [node name="GameOverMenu" type="Control" parent="Menu"]
 visible = false
@@ -223,41 +226,43 @@ label_settings = SubResource("LabelSettings_ymwol")
 
 [node name="ContinueButton" type="TextureButton" parent="Menu/GameOverMenu"]
 layout_mode = 2
-offset_left = 235.0
-offset_top = 404.0
-offset_right = 1387.0
-offset_bottom = 1052.0
+offset_left = 250.0
+offset_top = 391.0
+offset_right = 1402.0
+offset_bottom = 1039.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("6_g6plw")
 
 [node name="Label" type="Label" parent="Menu/GameOverMenu/ContinueButton"]
 layout_mode = 0
-offset_left = 110.0
+offset_left = 20.0
 offset_top = 155.0
-offset_right = 332.0
+offset_right = 299.0
 offset_bottom = 227.0
 scale = Vector2(4, 4)
 text = "Continue"
 label_settings = SubResource("LabelSettings_1q7pm")
+horizontal_alignment = 1
 
 [node name="QuitButton" type="TextureButton" parent="Menu/GameOverMenu"]
 layout_mode = 0
-offset_left = 235.0
-offset_top = 676.0
-offset_right = 1387.0
-offset_bottom = 1324.0
+offset_left = 250.0
+offset_top = 722.0
+offset_right = 1402.0
+offset_bottom = 1370.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("6_g6plw")
 
 [node name="Label" type="Label" parent="Menu/GameOverMenu/QuitButton"]
 layout_mode = 0
-offset_left = 330.0
+offset_left = 15.0
 offset_top = 155.0
-offset_right = 435.0
+offset_right = 297.0
 offset_bottom = 227.0
 scale = Vector2(4, 4)
 text = "Quit"
 label_settings = SubResource("LabelSettings_y2x15")
+horizontal_alignment = 1
 
 [node name="AdView" type="Control" parent="Menu"]
 visible = false

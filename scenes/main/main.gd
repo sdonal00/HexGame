@@ -14,7 +14,8 @@ func _on_show_ff_button():
 
 func _ready():
 	$Menu/GameHud.visible = true
-	$Menu/GameHud/Highscore.set_text("Best " + str(Globals.highscore))
+	$Menu/PauseMenu/Highscore.set_text("Best " + str(Globals.highscore))
+	$Menu/GameOverMenu/ContinueButton/Label.set_text("Continue")
 
 func hit_timer_reset():
 	$Game/HitTimer.stop()
@@ -40,13 +41,12 @@ func start_round():
 	$Game/HitTimer.stop()
 	kill_children($Game/Projectiles)
 	$Game/Level/Level1.start_next_round()
-	$Menu/GameHud/Highscore.set_text("Best " + str(Globals.highscore))
+	$Menu/PauseMenu/Highscore.set_text("Best " + str(Globals.highscore))
 	
 func _on_level_1_update_score():
 	$Menu/GameHud/Points.set_text(str(Globals.points))
 	if Globals.points > Globals.highscore:
 		Globals.highscore = Globals.points
-	#$Menu/GameHud/Highscore.set_text("Best " + str(Globals.highscore))
 	
 func _on_level_1_projectile_deleted():
 	#1 before last projectile is freed
@@ -54,7 +54,6 @@ func _on_level_1_projectile_deleted():
 		start_round()
 
 func _on_level_1_game_over():
-	$Menu/AdView/Rewarded.load_ad()
 	$Menu/GameOverMenu.visible = true
 
 func _on_play_button_pressed():
@@ -97,7 +96,8 @@ func set_proj_speed(modifier, mul):
 
 func _on_continue_button_pressed():
 	$Menu/AdView.visible = true
-	$Menu/AdView/Rewarded.show_ad()
+	$Menu/GameOverMenu/ContinueButton/Label.set_text("Loading...")
+	$Menu/AdView/Rewarded.load_ad()
 
 func fast_forward():
 	ff = true
@@ -115,6 +115,7 @@ func _on_ff_button_pressed():
 			fast_forward()
 
 func _on_rewarded_earned_respawn():
+	$Menu/GameOverMenu/ContinueButton/Label.set_text("Continue")
 	$Menu/GameOverMenu.visible = false
 	#Logic to show ad
 	Globals.game_over = false
