@@ -80,8 +80,8 @@ Globals="*res://globals/globals.gd"
 
 [display]
 
-window/size/viewport_width=720
-window/size/viewport_height=1560
+window/size/viewport_width=1170
+window/size/viewport_height=2535
 window/stretch/mode="viewport"
 window/handheld/orientation=1
 mouse_cursor/size/viewport_height=1560

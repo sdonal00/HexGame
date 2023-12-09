@@ -8,12 +8,14 @@
 script = ExtResource("1_b0p5a")
 
 [node name="Level" type="Node2D" parent="."]
+scale = Vector2(1.625, 1.625)
 
 [node name="Level1" parent="Level" instance=ExtResource("1_jspr0")]
 
 [node name="Turret" parent="." instance=ExtResource("2_6rm36")]
 visible = false
 position = Vector2(596, 720)
+scale = Vector2(1.625, 1.625)
 
 [node name="Projectiles" type="Node2D" parent="."]
 
