@@ -177,7 +177,7 @@ layout_mode = 0
 offset_top = 45.0
 offset_right = 721.0
 offset_bottom = 185.0
-text = "HexaGone"
+text = "HexiGone"
 label_settings = SubResource("LabelSettings_ymwol")
 horizontal_alignment = 1
 
