@@ -3,18 +3,35 @@ extends Node2D
 @onready var hexes: Array = get_children()
 
 var current_marker_position: int
+var health_list = [0,0,0,0,0,0,0,0,0,0]
 signal play_pop()
 
 func _ready():
 	current_marker_position = 0
+	var index = 0
 	for child in hexes:
 		var num = round(randf_range(0,1.5))
 		if num == 0:
 			child.queue_free()
 		else:
 			child.connect("play_pop", _on_play_pop)
+		index += 1
 	set_health()
+	update_health_list()
 
+func update_health_list():
+	var children = get_children()
+	var count = 0
+	for i in 10:
+		if len(children) > count and children[count].index == i:
+			health_list[i] = children[count].health
+			count += 1
+		else:
+			health_list[i] = 0
+
+func get_health_list() -> Array:
+	return health_list
+	
 func _on_play_pop():
 	play_pop.emit()
 

@@ -12,27 +12,36 @@ position = Vector2(45, 38)
 
 [node name="Hex2" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(115, 78)
+index = 1
 
 [node name="Hex3" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(185, 38)
+index = 2
 
 [node name="Hex4" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(255, 78)
+index = 3
 
 [node name="Hex5" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(325, 38)
+index = 4
 
 [node name="Hex6" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(395, 78)
+index = 5
 
 [node name="Hex7" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(465, 38)
+index = 6
 
 [node name="Hex8" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(535, 78)
+index = 7
 
 [node name="Hex9" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(605, 38)
+index = 8
 
 [node name="Hex10" parent="." instance=ExtResource("1_etbn2")]
 position = Vector2(675, 78)
+index = 9

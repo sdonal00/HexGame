@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @export var health: int = 1
+@export var index: int
 
 signal update_score()
 signal play_pop()

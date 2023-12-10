@@ -8,6 +8,8 @@ signal update_score()
 signal projectile_deleted()
 signal game_over()
 
+var prev_points: int = 0
+
 func _ready():
 	create_row()
 	move_rows()
@@ -21,7 +23,9 @@ func start_next_round():
 
 func move_rows():
 	var rows = $Rows.get_children()
+	var hexes = [[],[],[],[],[],[],[],[],[],[],[],[]]
 	for i in len(rows):
+		rows[i].update_health_list()
 		if i < len(row_markers) - 1 and i < len(rows) and len(row_markers) > len(rows)-i:
 			continue
 		else:
@@ -32,6 +36,21 @@ func move_rows():
 				Globals.game_over = true
 				game_over.emit()
 				return
+	rows = $Rows.get_children()
+	var count = 0
+	for q in 12:
+		if count < len(rows):
+			hexes[q] = rows[len(rows) - count - 1].get_health_list()
+		else:
+			hexes[q] = [0,0,0,0,0,0,0,0,0,0]
+		count += 1
+	
+	print((Globals.points - prev_points) / Globals.current_round, Globals.points, hexes)
+	#execute here
+	prev_points = Globals.points
+		
+		
+		
 	for i in len(rows):
 		if i < len(row_markers) - 1 and i < len(rows) and len(row_markers) > len(rows)-i:
 			var tween = get_tree().create_tween().set_parallel(true)
