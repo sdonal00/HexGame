@@ -156,11 +156,14 @@ size_flags_horizontal = 0
 texture_normal = ExtResource("5_nrsj2")
 
 [node name="FFButton" type="TextureButton" parent="Menu/GameHud"]
+visible = false
 layout_mode = 2
-offset_left = 650.0
-offset_top = 9.0
-offset_right = 1150.0
-offset_bottom = 509.0
+offset_left = 648.0
+offset_top = 828.692
+offset_right = 1148.0
+offset_bottom = 1328.69
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.11848, 0.0988256)
 size_flags_horizontal = 0
 texture_normal = ExtResource("6_5mkp0")
